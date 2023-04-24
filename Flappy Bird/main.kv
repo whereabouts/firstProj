@@ -1,0 +1,55 @@
+#:include obstacle.kv
+
+FloatLayout:
+    Background:
+        id: background
+        canvas.before:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "assets/background.png"
+            Rectangle:
+                size: 1920, 364
+                pos: self.pos
+                source: "assets/mountain.png"
+            Rectangle:
+                size: self.width, 96
+                pos: self.pos[0], self.pos[1]
+                texture: self.floor_texture
+            Rectangle:
+                size: self.width, 138
+                pos: self.pos[0], self.pos[1] + self.height - 138
+                texture: self.bgvine_texture
+            Rectangle:
+                size: self.width, 100
+                pos: self.pos[0], self.pos[1] + self.height - 505
+                texture: self.bgtrees_texture
+            Rectangle:
+                size: self.width, 100
+                pos: self.pos[0], self.pos[1] + self.height - 505
+                texture: self.forest_texture
+    Label:
+        id: score
+        height: 96
+        size_hint_y: None
+        text: "0"
+        font_size: 40
+
+    Button:
+        id: starto
+        text: "Start"
+        size_hint: None, None
+        pos_hint: {"center_x": 0.49, "center_y": 0.5}
+        background_normal: "assets/transparent.png"
+        background_down: "assets/transparent.png"
+        on_release:
+            self.disabled = True
+            self.opacity = 0
+            app.starto()
+
+    Birdy:
+        id: birdy
+        source: "assets/bird1.png"
+        size_hint: None, None
+        size: 38, 28
+        pos: 20, (root.height - 96) / 2.0

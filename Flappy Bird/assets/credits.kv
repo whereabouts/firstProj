@@ -1,0 +1,15 @@
+MDScreen:
+    name: "credits"
+    MDFloatLayout:
+        Label:
+            text: "Credits"
+            pos_hint: {'center_x': .5, 'center_y': 0.85}
+
+    Button:
+        text: "Go Back >>"
+        size_hint: .17, .075
+
+        pos_hint: {"center_x": 0.9, "center_y": 0.95}
+        on_release:
+            root.manager.transition.direction = "left"
+            root.manager.current = "main"

@@ -1,0 +1,34 @@
+<Obstacle>:
+    top_body_position: self.obstacle_center + self.GAP_SIZE/2.0 + self.CAP_SIZE
+    top_cap_position: self.obstacle_center + self.GAP_SIZE/2.0
+    bottom_cap_position: self.obstacle_center - self.GAP_SIZE/2.0 - self.CAP_SIZE
+    bottom_body_position: self.pos[1]
+
+    canvas.before:
+        # TOP
+        Rectangle:
+            # top obstacle body
+            size: 48, self.top - self.top_body_position
+            pos: self.pos[0] + (64 - 48)/2.0, self.top_body_position
+            texture: self.upper_obstacle_body_texture
+            tex_coords: self.top_obstacle_tex_coords
+
+        Rectangle:
+            # top obstacle cap
+            size: 64, self.CAP_SIZE
+            pos: self.pos[0], self.top_cap_position
+            source: "assets/vine_cap.png"
+
+        # BOTTOM
+        Rectangle:
+            # btm obstacle cap
+            size: 64, self.CAP_SIZE
+            pos: self.pos[0], self.bottom_cap_position
+            source: "assets/log_cap.png"
+
+        Rectangle:
+            # btm obstacle body
+            size: 48, self.bottom_cap_position - self.bottom_body_position
+            pos: self.pos[0] + (64 - 48)/2.0, self.bottom_body_position
+            texture: self.lower_obstacle_body_texture
+            tex_coords: self.lower_obstacle_tex_coords
